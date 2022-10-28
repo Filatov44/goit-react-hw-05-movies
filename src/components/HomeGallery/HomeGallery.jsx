@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {
   StyledGalleryList,
   StyledGalleryItem,
@@ -43,6 +43,6 @@ export default function HomeGallery({ onMovies }) {
   );
 }
 
-// HomeGallery.propTypes = {
-//     movies: PropTypes.array
-// };
+HomeGallery.propTypes = {
+    movies: PropTypes.array
+};

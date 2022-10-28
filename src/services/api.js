@@ -29,7 +29,7 @@ export async function SearchMovies(query) {
     const data = await axios.get(
       `${SERCH_BASE_URL}?api_key=${API_KEY}&query=${query}&include_adult=false`
     );
-    return data;
+    return data.data.results;
   } catch (error) {
     console.log(error);
   }
