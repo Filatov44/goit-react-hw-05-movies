@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { toast } from 'react-toastify';
 import { BsSearch } from 'react-icons/bs';
 import {
   StyledForm,
   StyledSearchInput,
   StyledSearchBtn,
+  StyledSerchText,
 } from './SearchForm.style';
 
 export default function SearchForm({onSubmit}) {
@@ -25,7 +25,7 @@ export default function SearchForm({onSubmit}) {
     const handleSubmit = e => {
       e.preventDefault();
       if (query.trim() === '') {
-        toast.error('Please enter a valid request');
+        alert('Please enter a valid request');
         return;
       }
       onSubmit(query);
@@ -33,19 +33,22 @@ export default function SearchForm({onSubmit}) {
     };
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <StyledSearchInput
-        onChange={handleChange}
-        value={query}
-        name="query"
-        type="text"
-        autocomplete="off"
-        placeholder="Search movies..."
-      ></StyledSearchInput>
-      <StyledSearchBtn onClick={handleSubmit} type="submit">
-        <BsSearch size={20} /> <p>Search</p>
-      </StyledSearchBtn>
-    </StyledForm>
+    <>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledSearchInput
+          onChange={handleChange}
+          value={query}
+          name="query"
+          type="text"
+          autocomplete="off"
+          placeholder="Search movies..."
+        ></StyledSearchInput>
+        <StyledSearchBtn onClick={handleSubmit} type="submit">
+          <BsSearch fill="#0000ff" size={20} />{' '}
+          <StyledSerchText>Search</StyledSerchText>
+        </StyledSearchBtn>
+      </StyledForm>
+    </>
   );
 }
 

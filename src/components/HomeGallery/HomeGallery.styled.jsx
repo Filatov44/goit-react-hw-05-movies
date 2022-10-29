@@ -4,11 +4,15 @@ import { Link } from 'react-router-dom';
 export const StyledGalleryList = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-around;
+  padding: 0;
+ 
+  /* gap: 20px; */
 `;
 
 export const StyledGalleryItem = styled.li`
   text-align: center;
+  margin-bottom: 25px;
   list-style: none;
   overflow: hidden;
   border: 1px solid #df7710;
@@ -34,6 +38,7 @@ export const StyledGalleryLink = styled(Link)`
 
 export const StyledGalleryMovieTitle = styled.p`
     font-size: 20px;
+    max-width: 342px;
     color: black;
     padding-top:15px;
     padding-bottom: 15px;

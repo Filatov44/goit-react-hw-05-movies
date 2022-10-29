@@ -6,14 +6,16 @@ import ButtonGoBack from 'components/Button/Button';
 import { BASE_POSTER_IMG_URL } from 'services/api';
 
 import {
-  StyledDetailsContainer,
+    StyledDetailsContainer,
+    StyledDetailsContainerInfo,
   StyledOutletContainer,
   StyledDetailsImg,
   StyledDetailsTitle,
   StyledUserScore,
   StyledDetailsSubTitle,
   StyledDetailsGenres,
-  StyledDetailsText,
+    StyledDetailsText,
+  StyledDetailsTextAdd,
   StyledAddInfoList,
   StyledLink,
 } from './MovieDetails.styled';
@@ -34,8 +36,8 @@ export default function MovieDetails() {
     const movieById = async () => {
       try {
         const data = await SearchMoviesDetails(movieId);
-          setMovie(data);
-          console.log(data);
+        setMovie(data);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -51,24 +53,17 @@ export default function MovieDetails() {
     if (genres) {
       return genres.map(genre => genre.name).join(', ');
     }
-    };
-    
-   
-    const {
-      original_title,
-      overview,
-      genres,
-      vote_average,
-      poster_path,
-    } = movie;
+  };
 
-     //переведем в % отзывы
-    const userScore = vote_average => {
-        return vote_average * 10 + '%';
-    }
+  const { original_title, overview, genres, vote_average, poster_path } = movie;
 
-    const emptyImg =
-        'https://www.wikihow.com/images/thumb/f/f7/Be-a-Film-Director-Step-16-Version-2.jpg/aid960853-v4-1200px-Be-a-Film-Director-Step-16-Version-2.jpg';
+  //переведем в % отзывы
+  const userScore = vote_average => {
+    return vote_average * 10 + '%';
+  };
+
+  const emptyImg =
+    'https://www.wikihow.com/images/thumb/f/f7/Be-a-Film-Director-Step-16-Version-2.jpg/aid960853-v4-1200px-Be-a-Film-Director-Step-16-Version-2.jpg';
 
   return (
     <div>
@@ -84,19 +79,23 @@ export default function MovieDetails() {
               poster_path ? `${BASE_POSTER_IMG_URL}${poster_path}` : emptyImg
             }
             alt={original_title}
-            width="350"
+            width="300"
           />
-        </StyledDetailsImg>
-              <StyledDetailsTitle>{original_title} </StyledDetailsTitle>
-        <StyledUserScore>User Score: {`${userScore(vote_average)}`} </StyledUserScore>
+              </StyledDetailsImg>
+              <StyledDetailsContainerInfo>
+        <StyledDetailsTitle>{original_title} </StyledDetailsTitle>
+        <StyledUserScore>
+          User Score: {`${userScore(vote_average)}`}{' '}
+        </StyledUserScore>
         <StyledDetailsSubTitle>Overview</StyledDetailsSubTitle>
 
         <StyledDetailsText>{overview}</StyledDetailsText>
-        <StyledDetailsGenres>Genres</StyledDetailsGenres>
-        <StyledDetailsText>{`${allGenres(genres)}`}</StyledDetailsText>
+        <StyledDetailsGenres>Genres:</StyledDetailsGenres>
+                  <StyledDetailsText>{`${allGenres(genres)}`}</StyledDetailsText>
+                  </StyledDetailsContainerInfo>
       </StyledDetailsContainer>
       <StyledOutletContainer>
-        <StyledDetailsText>Additional information</StyledDetailsText>
+        <StyledDetailsTextAdd>Additional information</StyledDetailsTextAdd>
         <StyledAddInfoList>
           <StyledLink state={locationState} to={'cast'}>
             Cast

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-  p,
+  /* p, */
   h1,
   h2,
   h3,

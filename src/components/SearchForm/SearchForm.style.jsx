@@ -4,7 +4,8 @@ export const StyledForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 15px;
+  margin-top: 15px;
 `;
 export const StyledSearchBtn = styled.button`
   display: flex;
@@ -15,10 +16,19 @@ export const StyledSearchBtn = styled.button`
   cursor: pointer;
   transition: box-shadow 0.4s ease-in-out;
 
+  :hover,
   :focus {
+    background-color: #ffa60042;
     box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75) inset;
   }
 `;
+
+export const StyledSerchText = styled.span`
+  font-size: 20px;
+  margin-left: 5px;
+  color: blue;
+`
+
 export const StyledSearchInput = styled.input`
   padding: 10px;
   max-width: 400px;
