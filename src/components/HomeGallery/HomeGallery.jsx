@@ -10,7 +10,7 @@ import {
 
 import { BASE_IMG_URL } from 'services/api';
 
-export default function HomeGallery({ onMovies }) {
+export default function HomeGallery({ onMovies, title }) {
     const location = useLocation();
 
   const emptyImg =
@@ -18,7 +18,7 @@ export default function HomeGallery({ onMovies }) {
 
   return (
     <>
-      <StyledGalleryTitle>Trending today</StyledGalleryTitle>
+      <StyledGalleryTitle>{title}</StyledGalleryTitle>
       <StyledGalleryList>
         {onMovies.map(({ id, original_title, poster_path }) => {
           return (

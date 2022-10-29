@@ -23,8 +23,7 @@ export default function Home() {
     
   return (
     <>
-      <HomeGallery onMovies={trendingMovies} />
-      
+      <HomeGallery onMovies={trendingMovies} title={'Trending today'} />
     </>
   );
 }

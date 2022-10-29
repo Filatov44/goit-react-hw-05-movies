@@ -39,7 +39,7 @@ export default function Movies() {
     return (
       <>
         <SearchForm onSubmit={changeQuery} />
-        {isPosts && <HomeGallery onMovies={movies} />}
+        {isPosts && <HomeGallery onMovies={movies}  />}
       </>
     );
   
