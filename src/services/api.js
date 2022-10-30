@@ -12,7 +12,7 @@ const TRENDING_BASE_URL = `${BASE_URL}/trending/movie/day`;
 const SERCH_BASE_URL = `${BASE_URL}/search/movie`;
 const DETAILS_BASE_URL = `${BASE_URL}/movie/`;
 const CAST_BASE_URL = `${BASE_URL}/movie/`;
-const REVIEWS_BASE_URL = `${BASE_URL}/movie`;
+const REVIEWS_BASE_URL = `${BASE_URL}/movie/`;
 
 
 // трендовые фильмы
@@ -73,11 +73,14 @@ export async function GetReviewsMovies(id) {
       const data = await axios.get(
         `${REVIEWS_BASE_URL}${id}/reviews?api_key=${API_KEY}&language=en-US`
       );
-      return data;
+      console.log(data);
+      return data.data.results;
     } catch (error) {
       console.log(error);
     }   
 }
+
+// https://api.themoviedb.org/3/movie/49046/reviews?api_key=b2e346a99b15e55caecd14435e9b588f&language=en-US
 
 // export const TrendingMovies = async () => {
 //     try {

@@ -1,24 +1,31 @@
 import propTypes from 'prop-types';
 import { BASE_IMG_URL_CAST, NO_IMG_ACTOR } from 'services/api';
+import {
+  StyledCastList,
+  StyledCastListItem,
+  StyledCastListName,
+  StyledCastListCharacter,
+} from './CastList.styled';
 
 export default function CastList({cast}) {
   return (
       <div>
-          <ul>
+          <StyledCastList>
               {cast.map(({ id, character, name, profile_path }) => {
                   return (
-                    <li key={id}>
+                    <StyledCastListItem key={id}>
                       <img
                         src={profile_path ? `${BASE_IMG_URL_CAST}${profile_path}` : `${NO_IMG_ACTOR}`}
                         alt={name}
                         width="185px"
+                        height="250px"
                       />
-                      <p>{name}</p>
-                      <p>Character: {character ? character : "No information"}</p>
-                    </li>
+                      <StyledCastListName>{name}</StyledCastListName>
+                      <StyledCastListCharacter>Character: {character ? character : "No information"}</StyledCastListCharacter>
+                    </StyledCastListItem>
                   );
               })}
-          </ul>
+          </StyledCastList>
    </div>
   )
 };
