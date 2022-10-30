@@ -13,7 +13,7 @@ export default function Cast() {
       const castMoviesInfo = async () => {
         try {
             const data = await GetCastMovies(movieId);
-            console.log(data);
+            // console.log(data);
           setCast(data);
         } catch (error) {
           console.log(error);

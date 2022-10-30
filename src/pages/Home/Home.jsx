@@ -10,7 +10,7 @@ export default function Home() {
         const apiTrendingMovies = async () => {
             try {
                 const data = await TrendingMovies();
-                console.log(data);
+                // console.log(data);
                 setTrendingMovies(data)
             } catch (error) {
                 console.log(error)

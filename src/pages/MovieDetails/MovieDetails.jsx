@@ -24,6 +24,10 @@ export default function MovieDetails() {
   const [movie, setMovie] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
+  // const locationState = location.state
+  // console.log(location);
+  // console.log(location.state);
+  // console.log(locationState);
 
   //получаем id одного фильма через хук useParams() и сразу деструкторизируем параметр что нам нужен
   const { movieId } = useParams();
@@ -31,13 +35,15 @@ export default function MovieDetails() {
   //чтоб не было ошибки если переходим на страницу фильма по внешней ссылке
   //задаем главную страницу если в location.state нет свойства from
   const locationState = location.state?.from || '/';
+  // console.log(locationState);
+  // const locationState = location?.state?.from ?? '/';
+  // console.log(locationState);
 
   useEffect(() => {
     const movieById = async () => {
       try {
         const data = await SearchMoviesDetails(movieId);
         setMovie(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -46,6 +52,8 @@ export default function MovieDetails() {
   }, [movieId]);
 
   const goBack = () => navigate(locationState);
+
+  // const goBack = () => location.state ? navigate(location.state.pathname) : navigate('/')
 
   // для шага назад можно использовать const goBack = () => navigate(-1)
 
@@ -81,26 +89,26 @@ export default function MovieDetails() {
             alt={original_title}
             width="300"
           />
-              </StyledDetailsImg>
-              <StyledDetailsContainerInfo>
-        <StyledDetailsTitle>{original_title} </StyledDetailsTitle>
-        <StyledUserScore>
-          User Score: {`${userScore(vote_average)}`}{' '}
-        </StyledUserScore>
-        <StyledDetailsSubTitle>Overview</StyledDetailsSubTitle>
+        </StyledDetailsImg>
+        <StyledDetailsContainerInfo>
+          <StyledDetailsTitle>{original_title} </StyledDetailsTitle>
+          <StyledUserScore>
+            User Score: {`${userScore(vote_average)}`}{' '}
+          </StyledUserScore>
+          <StyledDetailsSubTitle>Overview</StyledDetailsSubTitle>
 
-        <StyledDetailsText>{overview}</StyledDetailsText>
-        <StyledDetailsGenres>Genres:</StyledDetailsGenres>
-                  <StyledDetailsText>{`${allGenres(genres)}`}</StyledDetailsText>
-                  </StyledDetailsContainerInfo>
+          <StyledDetailsText>{overview}</StyledDetailsText>
+          <StyledDetailsGenres>Genres:</StyledDetailsGenres>
+          <StyledDetailsText>{`${allGenres(genres)}`}</StyledDetailsText>
+        </StyledDetailsContainerInfo>
       </StyledDetailsContainer>
       <StyledOutletContainer>
         <StyledDetailsTextAdd>Additional information</StyledDetailsTextAdd>
         <StyledAddInfoList>
-          <StyledLink state={locationState} to={'cast'}>
+          <StyledLink state={location.state} to="cast">
             Cast
           </StyledLink>
-          <StyledLink state={locationState} to={'reviews'}>
+          <StyledLink state={location.state} to="reviews">
             Rewiews
           </StyledLink>
         </StyledAddInfoList>

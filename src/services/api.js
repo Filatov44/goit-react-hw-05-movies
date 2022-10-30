@@ -19,7 +19,7 @@ const REVIEWS_BASE_URL = `${BASE_URL}/movie/`;
 export async function TrendingMovies() {
   try {
     const  results  = await axios.get(`${TRENDING_BASE_URL}?api_key=${API_KEY}`);
-    console.log( results );
+    // console.log( results );
     return results.data.results;
   } catch (error) {
     console.log(error);
@@ -45,7 +45,7 @@ export async function SearchMoviesDetails(id) {
     const data  = await axios.get(
       `${DETAILS_BASE_URL}${id}?api_key=${API_KEY}&language=en-US`
     );
-     console.log(data);
+    //  console.log(data);
     return data.data;
   } catch (error) {
     console.log(error);
@@ -60,7 +60,7 @@ export async function GetCastMovies(id) {
     const data = await axios.get(
       `${CAST_BASE_URL}${id}/credits?api_key=${API_KEY}&language=en-US`
     );
-    console.log(data);
+    // console.log(data);
     return data.data.cast;
   } catch (error) {
     console.log(error);
@@ -73,7 +73,7 @@ export async function GetReviewsMovies(id) {
       const data = await axios.get(
         `${REVIEWS_BASE_URL}${id}/reviews?api_key=${API_KEY}&language=en-US`
       );
-      console.log(data);
+      // console.log(data);
       return data.data.results;
     } catch (error) {
       console.log(error);

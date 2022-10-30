@@ -13,8 +13,6 @@ const Cast = lazy(() => import('pages/Cast/Cast'));
 const Reviews = lazy(() => import('pages/Reviews/Reviews'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
-
-
 // import Container from './Container/Container';
 // import AppBar from './AppBar/AppBar';
 // import Home from 'pages/Home/Home';
